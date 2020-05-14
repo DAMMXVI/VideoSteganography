@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:VideoSteganography"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <MediaElement HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="419" Source="C:\Users\deniz\OneDrive\Masaüstü\BLİNKHR\mert.mp4"/>
+
     </Grid>
 </Window>
