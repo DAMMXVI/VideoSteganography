@@ -18,8 +18,8 @@
             <ColumnDefinition Width="260"></ColumnDefinition>
             <ColumnDefinition Width="370"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <MediaElement Grid.Row="0" Grid.Column="0" x:Name="selectedVideo" Stretch="Fill" Loaded="SelectedVideo_Loaded" ScrubbingEnabled="True" LoadedBehavior="Manual" MediaOpened="SelectedVideo_MediaOpened" MediaEnded="SelectedVideo_MediaEnded"></MediaElement>
-        <MediaElement Grid.Row="0" Grid.Column="2" x:Name="newVideo"></MediaElement>
+        <MediaElement Grid.Row="0" Grid.Column="0" x:Name="selectedVideo" Stretch="Fill" Loaded="SelectedVideo_Loaded" ScrubbingEnabled="True" LoadedBehavior="Manual" MediaOpened="SelectedVideo_MediaOpened" MediaEnded="SelectedVideo_MediaEnded" Width="370" Margin="0"/>
+        <MediaElement Grid.Row="0" Grid.Column="2" x:Name="newVideo" Stretch="Fill" Margin="0,0,13,0" Width="370"></MediaElement>
         <GroupBox Header="Select Video" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="  Path : " VerticalAlignment="Top" Margin="15,28,0,0" Grid.Row="2" Width="50"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Please select any video..." x:Name="txtVideoPath" VerticalAlignment="Top" Margin="60,28,0,0" Grid.Row="2" RenderTransformOrigin="0.09,0.49" Width="300"/>
@@ -36,14 +36,41 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="75,75,0,0" x:Name="txtType"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="75,100,0,0" x:Name="txtWidth"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="75,125,0,0" x:Name="txtHeight"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Status : " VerticalAlignment="Top" x:Name="txtStatus"/>
-        <Button x:Name="btnPlay" Grid.Row="1" Grid.Column="0" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="10,0,0,0" Height="30" FontSize="16" FontFamily="Times New Roman" Click="BtnPlay_Click" Cursor="Hand" IsEnabled="False"/>
-        <Button x:Name="btnPause" Grid.Row="1" Grid.Column="0" Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="110,10,0,10" Height="30" FontSize="16" FontFamily="Times New Roman" Cursor="Hand" Click="BtnPause_Click" IsEnabled="False"/>
-        <Button x:Name="btnReplay" Grid.Row="1" Grid.Column="0" Content="Replay" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="210,10,0,10" Height="30" FontSize="16" FontFamily="Times New Roman" Cursor="Hand" Click="BtnReplay_Click" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,0,0,0" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Status : " VerticalAlignment="Top" x:Name="txtStatus"/>
+        <Button x:Name="btnPlay" Grid.Row="1" Grid.Column="0" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="43,10,0,10" Height="30" FontSize="16" FontFamily="Times New Roman" Click="BtnPlay_Click" Cursor="Hand" IsEnabled="False" FontWeight="Bold">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="LightGreen" />
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnPause" Grid.Row="1" Grid.Column="0" Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="143,10,0,10" Height="30" FontSize="16" FontFamily="Times New Roman" Cursor="Hand" Click="BtnPause_Click" IsEnabled="False" FontWeight="Bold">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="IndianRed" />
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnReplay" Grid.Row="1" Grid.Column="0" Content="Replay" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="243,10,0,10" Height="30" FontSize="16" FontFamily="Times New Roman" Cursor="Hand" Click="BtnReplay_Click" IsEnabled="False" FontWeight="Bold">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="DarkGreen" />
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
-        <GroupBox Grid.Row="2" Grid.Column="2" Header="Hide Operation" Margin="10,0" >
+        <GroupBox Grid.Row="2" Grid.Column="2" Header="Hide Operation" Margin="10,0,27,0" >
         </GroupBox>
-        <RichTextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="327" Height="76" Margin="22,24,0,0" GotFocus="RichTextBox_GotFocus" x:Name="txtHide">
+        <RichTextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="294" Height="76" Margin="22,24,0,0" GotFocus="RichTextBox_GotFocus" x:Name="txtHide">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Entry information wanted hide.."/>
@@ -52,7 +79,14 @@
         </RichTextBox>
         <Button Grid.Row="2" Grid.Column="2" Height="25" Margin="22,105,0,20" Cursor="Hand" x:Name="btnHide" Click="BtnHide_Click" FontSize="16" FontFamily="Times New Roman" Content="Hide" HorizontalAlignment="Left" Width="75" />
         <Button Grid.Row="2" Grid.Column="2" Width="75" Height="25" Margin="116,105,0,20" Cursor="Hand" x:Name="btnSolve" FontSize="16" FontFamily="Times New Roman" Content="Solve" Click="BtnSolve_Click" HorizontalAlignment="Left" />
-        
+        <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="229" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="241" IsEnabled="False" IsReadOnly="True" x:Name="txtSolved">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Your conceal information will be here when you click solve button."/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
 
 
 
