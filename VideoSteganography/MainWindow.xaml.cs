@@ -97,6 +97,7 @@ namespace VideoSteganography
         private void RichTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             txtHide.Document.Blocks.Clear();
+            btnHide.IsEnabled = true;
         }
 
         private void BtnHide_Click(object sender, RoutedEventArgs e)
@@ -117,6 +118,7 @@ namespace VideoSteganography
                 } while (!String.IsNullOrEmpty(InfoHiding));
                 txtStatus.Text = "Congrulations! You concealed your information successfully!";
                 createVideo(bitmapsEmbedded);
+                btnSolve.IsEnabled = true;
 
             }
             catch (Exception)

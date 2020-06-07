@@ -35,7 +35,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="  Path : " VerticalAlignment="Top" Margin="15,28,0,0" Grid.Row="2" Width="50"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Please select any video..." x:Name="txtVideoPath" VerticalAlignment="Top" Margin="60,28,0,0" Grid.Row="2" RenderTransformOrigin="0.09,0.49" Width="300"/>
         <Button Content="Select Video" HorizontalAlignment="Left" VerticalAlignment="Top" Width="320" Margin="30,59,0,0" Grid.Row="2" Height="71" FontSize="16" FontWeight="Bold" x:Name="btnSelectVideo" Click="BtnSelectVideo_Click"/>
-        <GroupBox Grid.Row="2" Grid.Column="1" Header="Video properties" Margin="10,0,0,0" >
+        <GroupBox Grid.Row="2" Grid.Column="1" Header="Video properties" Margin="10,0" >
         </GroupBox>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name   : " Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="25,25,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Size      : " Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="25,50,0,0"/>
@@ -79,17 +79,17 @@
             </Button.Template>
         </Button>
 
-        <GroupBox Grid.Row="2" Grid.Column="2" Header="Hide Operation" Margin="10,0,27,0" >
+        <GroupBox Grid.Row="2" Grid.Column="2" Header="Hide Operation" Margin="10,0,0,0" >
         </GroupBox>
-        <RichTextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="294" Height="76" Margin="22,24,0,0" GotFocus="RichTextBox_GotFocus" x:Name="txtHide">
+        <RichTextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="339" Height="76" Margin="22,24,0,0" GotFocus="RichTextBox_GotFocus" x:Name="txtHide">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Entry information wanted hide.."/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Grid.Row="2" Grid.Column="2" Height="25" Margin="22,105,0,20" Cursor="Hand" x:Name="btnHide" Click="BtnHide_Click" FontSize="16" FontFamily="Times New Roman" Content="Hide" HorizontalAlignment="Left" Width="135" />
-        <Button Grid.Row="2" Grid.Column="2" Width="135" Height="25" Margin="181,106,0,19" Cursor="Hand" x:Name="btnSolve" FontSize="16" FontFamily="Times New Roman" Content="Solve" Click="BtnSolve_Click" HorizontalAlignment="Left" />
+        <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Height="25" Margin="22,112,0,13" Cursor="Hand" x:Name="btnHide" Click="BtnHide_Click" FontSize="16" FontFamily="Times New Roman" Content="Hide" HorizontalAlignment="Left" Width="155" />
+        <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Width="155" Height="25" Margin="206,112,0,13" Cursor="Hand" x:Name="btnSolve" FontSize="16" FontFamily="Times New Roman" Content="Solve" Click="BtnSolve_Click" HorizontalAlignment="Left" />
         <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="229" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="241" IsEnabled="False" IsReadOnly="True" x:Name="txtSolved">
             <FlowDocument>
                 <Paragraph>
@@ -127,6 +127,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <GroupBox Header="©" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="241" Grid.Column="1" Margin="10,5,0,0" Grid.Row="1"/>
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Made by Alper Deniz" Margin="45,19,31,5" FontStyle="Italic" FontFamily="Times New Roman" FontSize="20" Grid.Column="1" />
 
 
 
