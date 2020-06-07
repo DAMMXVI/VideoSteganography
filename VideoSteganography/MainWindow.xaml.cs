@@ -32,7 +32,7 @@ namespace VideoSteganography
         private long framecount, capacityHiding, capacityPerFrame;
         private List<Bitmap> bitmaps = new List<Bitmap>();
         private List<Bitmap> bitmapsEmbedded = new List<Bitmap>();
-        private bool isEnded = false;
+        private bool isEnded = false, isEnded2 = false;
         private string InfoHiding, InfoSolved;
         private int countFrame, bitRate;
         private double frameRate;
@@ -69,6 +69,28 @@ namespace VideoSteganography
             {
                 selectedVideo.Pause();
                 btnPlay.IsEnabled = true;
+            }
+        }
+
+        private void BtnPlay2_Click(object sender, RoutedEventArgs e)
+        {
+            newVideo.Play();
+            btnPlay2.IsEnabled = false;
+        }
+
+        private void BtnReplay2_Click(object sender, RoutedEventArgs e)
+        {
+            newVideo.Position = new TimeSpan(0, 0, 0);
+            newVideo.Play();
+            isEnded2 = false;
+        }
+
+        private void BtnPause2_Click(object sender, RoutedEventArgs e)
+        {
+            if (GetMediaState(newVideo) == MediaState.Play && !isEnded2)
+            {
+                newVideo.Pause();
+                btnPlay2.IsEnabled = true;
             }
         }
 
@@ -133,6 +155,24 @@ namespace VideoSteganography
         {
             selectedVideo.Pause();
             btnPlay.IsEnabled = btnPause.IsEnabled = true;
+        }
+
+        private void NewVideo_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            newVideo.Pause();
+            btnPlay2.IsEnabled = btnPause2.IsEnabled = true;
+        }
+
+        private void NewVideo_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            btnReplay2.IsEnabled = true;
+            btnPlay2.IsEnabled = false;
+            isEnded2 = true;
+        }
+
+        private void NewVideo_Loaded(object sender, RoutedEventArgs e)
+        {
+            newVideo.Pause();
         }
 
         private void SelectedVideo_MediaEnded(object sender, RoutedEventArgs e)
