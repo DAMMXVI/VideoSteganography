@@ -129,6 +129,7 @@
         </Button>
         <GroupBox Header="©" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="241" Grid.Column="1" Margin="10,5,0,0" Grid.Row="1"/>
         <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Made by Alper Deniz" Margin="45,19,31,5" FontStyle="Italic" FontFamily="Times New Roman" FontSize="20" Grid.Column="1" />
+        <GroupBox Grid.Column="1" Header="Data Properties" HorizontalAlignment="Left" Height="266" Margin="10,0,0,0" VerticalAlignment="Top" Width="241"/>
 
 
 
