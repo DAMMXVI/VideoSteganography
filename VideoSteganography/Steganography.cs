@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace VideoSteganography
@@ -222,5 +223,136 @@ namespace VideoSteganography
 
             return result;
         }
+
+        public static float calcMSE(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
+        {
+            float difference = 0f;
+
+            //foreach (var bitmap in bitmapsReal.ToList().Select((r, i) => new { Row = r, Index = i }))
+            for (int k = 0; k < bitmapsReal.Count; k++)
+            {
+                for (int i = 0; i < bitmapsReal[k].Height; i++)
+                {
+                    // pass through each row
+                    for (int j = 0; j < bitmapsReal[k].Width; j++)
+                    {
+                        Color realPx = bitmapsReal[k].GetPixel(j, i);
+                        Color stegoPx = bitmapsStego[k].GetPixel(j, i);
+                        int diffR = realPx.R - stegoPx.R;
+                        int diffG = realPx.G - stegoPx.G;
+                        int diffB = realPx.B - stegoPx.B;
+                        int diffRGB = diffR + diffG + diffB;
+                        difference += (diffRGB * diffRGB);
+                    }
+                }
+            }
+            float sizeOfPixel = bitmapsReal[0].Width * bitmapsReal[0].Height * 1.0f;
+            return (1 / sizeOfPixel) * difference;
+        }
+
+        public static double calcPSNR(float MSEvalue, int maxValue = 255)
+        {
+            return MSEvalue == 0 ? 100.0f : 10.0f * Math.Log10((maxValue * maxValue) / MSEvalue);
+        }
+
+        public static double calcAD(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
+        {
+            float difference = 0f;
+
+            for (int k = 0; k < bitmapsReal.Count; k++)
+            {
+                for (int i = 0; i < bitmapsReal[k].Height; i++)
+                {
+                    // pass through each row
+                    for (int j = 0; j < bitmapsReal[k].Width; j++)
+                    {
+                        Color realPx = bitmapsReal[k].GetPixel(j, i);
+                        Color stegoPx = bitmapsStego[k].GetPixel(j, i);
+                        int diffR = realPx.R - stegoPx.R;
+                        int diffG = realPx.G - stegoPx.G;
+                        int diffB = realPx.B - stegoPx.B;
+                        int diffRGB = diffR + diffG + diffB;
+                        difference += (diffRGB * diffRGB);
+                    }
+                }
+            }
+            float sizeOfPixel = bitmapsReal[0].Width * bitmapsReal[0].Height * 1.0f;
+            return difference / sizeOfPixel;
+        }
+
+        public static double calcNC(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
+        {
+            float sum = 0f;
+            float sumReal = 0f;
+
+            for (int k = 0; k < bitmapsReal.Count; k++)
+            {
+                for (int i = 0; i < bitmapsReal[k].Height; i++)
+                {
+                    // pass through each row
+                    for (int j = 0; j < bitmapsReal[k].Width; j++)
+                    {
+                        Color realPx = bitmapsReal[k].GetPixel(j, i);
+                        Color stegoPx = bitmapsStego[k].GetPixel(j, i);
+                        int diffR = realPx.R * stegoPx.R;
+                        int diffG = realPx.G * stegoPx.G;
+                        int diffB = realPx.B * stegoPx.B;
+                        sum += diffR + diffG + diffB;
+                        sumReal += ((realPx.R + realPx.G + realPx.B) * (realPx.R + realPx.G + realPx.B));
+                    }
+                }
+            }
+            return sum / sumReal;
+        }
+
+        public static double calcNAE(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
+        {
+            float difference = 0f;
+            int totalValue = 0;
+
+            for (int k = 0; k < bitmapsReal.Count; k++)
+            {
+                for (int i = 0; i < bitmapsReal[k].Height; i++)
+                {
+                    // pass through each row
+                    for (int j = 0; j < bitmapsReal[k].Width; j++)
+                    {
+                        Color realPx = bitmapsReal[k].GetPixel(j, i);
+                        Color stegoPx = bitmapsStego[k].GetPixel(j, i);
+                        totalValue += (realPx.R + realPx.G + realPx.B);
+                        int diffR = Math.Abs(realPx.R - stegoPx.R);
+                        int diffG = Math.Abs(realPx.G - stegoPx.G);
+                        int diffB = Math.Abs(realPx.B - stegoPx.B);
+                        int diffRGB = diffR + diffG + diffB;
+                        difference += diffRGB;
+                    }
+                }
+            }
+            return difference / (Math.Abs(totalValue));
+        }
+
+        public static double calcSC(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
+        {
+            int realSum = 0;
+            int stegoSum = 0;
+
+            for (int k = 0; k < bitmapsReal.Count; k++)
+            {
+                for (int i = 0; i < bitmapsReal[k].Height; i++)
+                {
+                    // pass through each row
+                    for (int j = 0; j < bitmapsReal[k].Width; j++)
+                    {
+                        Color realPx = bitmapsReal[k].GetPixel(j, i);
+                        Color stegoPx = bitmapsStego[k].GetPixel(j, i);
+                        realSum += ((realPx.R + realPx.G + realPx.B) * (realPx.R + realPx.G + realPx.B));
+                        stegoSum += ((stegoPx.R + stegoPx.G + stegoPx.B) * (stegoPx.R + stegoPx.G + stegoPx.B));
+
+                    }
+                }
+            }
+            return realSum / stegoSum * 1.0;
+        }
     }
 }
+

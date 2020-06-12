@@ -103,9 +103,10 @@ namespace VideoSteganography
         private void BtnHide_Click(object sender, RoutedEventArgs e)
         {
             InfoHiding = new TextRange(txtHide.Document.ContentStart, txtHide.Document.ContentEnd).Text;
+            //InfoHiding = File.ReadAllText(@"C:\Users\deniz\OneDrive\Masaüstü\5milyonlukmetin.txt");
             string firstPart = String.Empty, elapsedPart = String.Empty;
             countFrame = 0;
-            bitmapsEmbedded = bitmaps;
+            bitmapsEmbedded = Extensions.Clone(bitmaps);
             try
             {
                 do
@@ -113,13 +114,13 @@ namespace VideoSteganography
                     bool isBigger = InfoHiding.Length > capacityPerFrame;
                     firstPart = InfoHiding.Substring(0, isBigger ? (int)capacityPerFrame : InfoHiding.Length);
                     InfoHiding = isBigger ? InfoHiding.Substring((int)capacityPerFrame, InfoHiding.Length - (int)capacityPerFrame) : String.Empty;
-                    bitmapsEmbedded[countFrame] = (Steganography.embedText(firstPart, bitmaps[countFrame]));
+                    Steganography.embedText(firstPart, bitmapsEmbedded[countFrame]);
                     countFrame++;
                 } while (!String.IsNullOrEmpty(InfoHiding));
                 txtStatus.Text = "Congrulations! You concealed your information successfully!";
                 createVideo(bitmapsEmbedded);
                 btnSolve.IsEnabled = true;
-
+                fillValues();
             }
             catch (Exception)
             {
@@ -245,6 +246,30 @@ namespace VideoSteganography
         private void changeVideoSource(MediaElement mediaElement, string url)
         {
             mediaElement.Source = new Uri(url);
+        }
+
+        private void fillValues()
+        {
+            txtMSE.Text = Steganography.calcMSE(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList()).ToString("0.0000000");
+            lblMSE.Visibility = Visibility.Visible;
+            txtPSNR.Text = Steganography.calcPSNR(Steganography.calcMSE(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList())).ToString("0.0000000");
+            lblPSNR.Visibility = Visibility.Visible;
+            txtAD.Text = Steganography.calcAD(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList()).ToString("0.0000000");
+            lblAD.Visibility = Visibility.Visible;
+            txtNC.Text = Steganography.calcNC(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList()).ToString("0.0000000");
+            lblNC.Visibility = Visibility.Visible;
+            txtNAE.Text = Steganography.calcNAE(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList()).ToString("0.0000000");
+            lblNAE.Visibility = Visibility.Visible;
+            txtSC.Text = Steganography.calcSC(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList()).ToString("0.0000000");
+            lblSC.Visibility = Visibility.Visible;
+        }
+    }
+
+    static class Extensions
+    {
+        public static List<T> Clone<T>(this List<T> listToClone) where T : ICloneable
+        {
+            return listToClone.Select(item => (T)item.Clone()).ToList();
         }
     }
 }

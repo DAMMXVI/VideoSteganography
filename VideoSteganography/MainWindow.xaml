@@ -90,7 +90,7 @@
         </RichTextBox>
         <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Height="25" Margin="22,112,0,13" Cursor="Hand" x:Name="btnHide" Click="BtnHide_Click" FontSize="16" FontFamily="Times New Roman" Content="Hide" HorizontalAlignment="Left" Width="155" />
         <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Width="155" Height="25" Margin="206,112,0,13" Cursor="Hand" x:Name="btnSolve" FontSize="16" FontFamily="Times New Roman" Content="Solve" Click="BtnSolve_Click" HorizontalAlignment="Left" />
-        <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="229" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="241" IsEnabled="False" IsReadOnly="True" x:Name="txtSolved">
+        <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="320" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="241" IsEnabled="False" IsReadOnly="True" x:Name="txtSolved">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Your conceal information will be here when you click solve button."/>
@@ -129,7 +129,26 @@
         </Button>
         <GroupBox Header="©" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="241" Grid.Column="1" Margin="10,5,0,0" Grid.Row="1"/>
         <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Made by Alper Deniz" Margin="45,19,31,5" FontStyle="Italic" FontFamily="Times New Roman" FontSize="20" Grid.Column="1" />
-        <GroupBox Grid.Column="1" Header="Data Properties" HorizontalAlignment="Left" Height="266" Margin="10,0,0,0" VerticalAlignment="Top" Width="241"/>
+        <GroupBox Grid.Column="1" Header="Quality Values" HorizontalAlignment="Left" Height="175" Margin="10,0,0,0" VerticalAlignment="Top" Width="241"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="MSE    : " Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="25,25,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="PSNR  : " Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="25,50,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="AD      : " Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="25,75,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NC      : " Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="25,100,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NAE    : " Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="25,125,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="SC       : " Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="25,150,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="75,25,0,0" x:Name="txtMSE"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="75,50,0,0" x:Name="txtPSNR"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="75,75,0,0" x:Name="txtAD"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="75,100,0,0" x:Name="txtNC"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="75,125,0,0" x:Name="txtNAE"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="75,150,0,0" x:Name="txtSC"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (0 - 255)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,25,0,0" x:Name="lblMSE" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (∞ - 0)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,50,0,0" x:Name="lblPSNR" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (0 - ±255)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,75,0,0" x:Name="lblAD" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (1 - 0)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,100,0,0" x:Name="lblNC" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (0 - 1)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,125,0,0" x:Name="lblNAE" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (1 - ∞)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,150,0,0" x:Name="lblSC" Visibility="Hidden"/>
+
 
 
 
