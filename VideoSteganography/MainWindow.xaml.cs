@@ -114,7 +114,7 @@ namespace VideoSteganography
                     Steganography.embedText(firstPart, bitmapsEmbedded[countFrame]);
                     countFrame++;
                 } while (!String.IsNullOrEmpty(InfoHiding));
-                txtStatus.Text = "Congrulations! You concealed your information successfully!";
+                txtStatus.Text = $"Status : Congrulations! You concealed your information successfully and quality values of new video was calculated.";
                 createVideo(bitmapsEmbedded);
                 btnSolve.IsEnabled = true;
                 fillValues();
@@ -122,7 +122,7 @@ namespace VideoSteganography
             catch (Exception)
             {
 
-                txtStatus.Text = "Something is wrong! You didn't conceal your information successfully!";
+                txtStatus.Text = "Status : Something is wrong! You didn't conceal your information successfully!";
             }
         }
 
@@ -133,7 +133,7 @@ namespace VideoSteganography
             {
                 InfoSolved += Steganography.extractText(bitmap);
             }
-            txtStatus.Text = $"Your concealed information is solved successfully!";
+            txtStatus.Text = $"Status : Your concealed information is solved successfully!";
             txtSolved.IsEnabled = true;
             txtSolved.Document.Blocks.Clear();
             txtSolved.Document.Blocks.Add(new Paragraph(new Run(InfoSolved)));
@@ -244,7 +244,7 @@ namespace VideoSteganography
             txtHeight.Text = height.ToString();
             txtType.Text = System.IO.Path.GetExtension(filePath);
             txtSize.Text = (new FileInfo(filePath).Length / 1024).ToString() + "KB";
-            txtStatus.Text = $"You have chance that can hide {capacityHiding} chracters.";
+            txtStatus.Text = $"Status : You have chance that can hide {capacityHiding} chracters.";
         }
 
         private MediaState GetMediaState(MediaElement myMedia)

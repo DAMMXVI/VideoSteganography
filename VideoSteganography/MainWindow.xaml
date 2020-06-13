@@ -47,7 +47,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="75,75,0,0" x:Name="txtType"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="75,100,0,0" x:Name="txtWidth"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="null" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="75,125,0,0" x:Name="txtHeight"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,0,0,0" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Status : " VerticalAlignment="Top" x:Name="txtStatus"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,0,0,0" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Status : " VerticalAlignment="Top" x:Name="txtStatus" Grid.ColumnSpan="3" Width="992"/>
         <Button x:Name="btnPlay" Grid.Row="1" Grid.Column="0" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="43,10,0,10" Height="30" FontSize="16" FontFamily="Times New Roman" Click="BtnPlay_Click" Cursor="Hand" IsEnabled="False" FontWeight="Bold">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
