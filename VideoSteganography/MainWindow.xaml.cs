@@ -1,23 +1,14 @@
-﻿using Accord.Math;
-using Accord.Video.FFMPEG;
+﻿using Accord.Video.FFMPEG;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace VideoSteganography
 {
@@ -38,6 +29,8 @@ namespace VideoSteganography
         private double frameRate;
         private VideoCodec codecName;
         private string videoDirectory = @"C:\Users\deniz\OneDrive\Masaüstü\SCHOOL REMOTE\Stenografi\VideoSteganography\VideoSteganography\Videos";
+        private int counfOfChracter;
+        private int unimportant = 0;
         #endregion
 
         public MainWindow()
@@ -103,6 +96,10 @@ namespace VideoSteganography
         private void BtnHide_Click(object sender, RoutedEventArgs e)
         {
             InfoHiding = new TextRange(txtHide.Document.ContentStart, txtHide.Document.ContentEnd).Text;
+            if (btnDelSpaces.IsChecked == true)
+            {
+                InfoHiding = Regex.Replace(InfoHiding, @"\s+", "");
+            }
             //InfoHiding = File.ReadAllText(@"C:\Users\deniz\OneDrive\Masaüstü\5milyonlukmetin.txt");
             string firstPart = String.Empty, elapsedPart = String.Empty;
             countFrame = 0;
@@ -204,6 +201,37 @@ namespace VideoSteganography
             capacityHiding = (framecount * width * height * 3) / 8;
             capacityPerFrame = capacityHiding / framecount;
         }
+        
+
+        private void BtnDelSpaces_Click(object sender, RoutedEventArgs e)
+        {
+            setCountOfChracter();
+            txtCountChracter.Text = $"Chracter count of your information : {counfOfChracter}";
+        }
+
+        private void TxtHide_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (unimportant > 3)
+            {
+                RichTextBox txtInfo = (sender as RichTextBox);
+                setCountOfChracter();
+                txtCountChracter.Text = $"Chracter count of your information : {counfOfChracter}";
+            }
+            unimportant++;
+        }
+
+        private void setCountOfChracter()
+        {
+            if (btnDelSpaces.IsChecked == true)
+            {
+                counfOfChracter = Regex.Replace(new TextRange(txtHide.Document.ContentStart, txtHide.Document.ContentEnd).Text, @"\s+", "").Count();
+            }
+            else
+            {
+                counfOfChracter = new TextRange(txtHide.Document.ContentStart, txtHide.Document.ContentEnd).Text.Trim().Count();
+            }
+        }
+
 
         private void FillTextBoxes(Microsoft.Win32.OpenFileDialog dialog)
         {

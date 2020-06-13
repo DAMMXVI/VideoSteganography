@@ -80,16 +80,17 @@
         </Button>
 
         <GroupBox Grid.Row="2" Grid.Column="2" Header="Hide Operation" Margin="10,0,0,0" >
+            <CheckBox Content="Del spaces" HorizontalAlignment="Left" Height="19" Margin="10,102,0,0" VerticalAlignment="Top" x:Name="btnDelSpaces" Click="BtnDelSpaces_Click"/>
         </GroupBox>
-        <RichTextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="339" Height="76" Margin="22,24,0,0" GotFocus="RichTextBox_GotFocus" x:Name="txtHide">
+        <RichTextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="339" Height="76" Margin="22,24,0,0" GotFocus="RichTextBox_GotFocus" x:Name="txtHide" TextChanged="TxtHide_TextChanged">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Entry information wanted hide.."/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Height="25" Margin="22,112,0,13" Cursor="Hand" x:Name="btnHide" Click="BtnHide_Click" FontSize="16" FontFamily="Times New Roman" Content="Hide" HorizontalAlignment="Left" Width="155" />
-        <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Width="155" Height="25" Margin="206,112,0,13" Cursor="Hand" x:Name="btnSolve" FontSize="16" FontFamily="Times New Roman" Content="Solve" Click="BtnSolve_Click" HorizontalAlignment="Left" />
+        <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Height="25" Margin="116,112,0,13" Cursor="Hand" x:Name="btnHide" Click="BtnHide_Click" FontSize="16" FontFamily="Times New Roman" Content="Hide" HorizontalAlignment="Left" Width="120" />
+        <Button IsEnabled="False" Grid.Row="2" Grid.Column="2" Width="120" Height="25" Margin="241,112,0,13" Cursor="Hand" x:Name="btnSolve" FontSize="16" FontFamily="Times New Roman" Content="Solve" Click="BtnSolve_Click" HorizontalAlignment="Left" />
         <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="320" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="241" IsEnabled="False" IsReadOnly="True" x:Name="txtSolved">
             <FlowDocument>
                 <Paragraph>
@@ -148,6 +149,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (1 - 0)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,100,0,0" x:Name="lblNC" Visibility="Hidden"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (0 - 1)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,125,0,0" x:Name="lblNAE" Visibility="Hidden"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ref value (1 - ∞)" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="143,150,0,0" x:Name="lblSC" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Margin="172,12,0,0" x:Name="txtCountChracter" FontSize="9"/>
 
 
 

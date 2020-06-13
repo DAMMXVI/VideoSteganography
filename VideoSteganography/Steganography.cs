@@ -333,8 +333,8 @@ namespace VideoSteganography
 
         public static double calcSC(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
         {
-            int realSum = 0;
-            int stegoSum = 0;
+            double realSum = 0;
+            double stegoSum = 0;
 
             for (int k = 0; k < bitmapsReal.Count; k++)
             {
@@ -351,7 +351,7 @@ namespace VideoSteganography
                     }
                 }
             }
-            return realSum / stegoSum * 1.0;
+            return (stegoSum / realSum);
         }
     }
 }
