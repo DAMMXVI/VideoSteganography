@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoSteganography"
         mc:Ignorable="d"
-        Title="MainWindow" Height="761" Width="1036">
+        Title="The Project for Steganograpy Lesson " Height="761" Width="1036" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="10,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="500"></RowDefinition>

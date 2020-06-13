@@ -38,6 +38,7 @@ namespace VideoSteganography
             InitializeComponent();
         }
 
+        #region events
         private void SelectedVideo_Loaded(object sender, RoutedEventArgs e)
         {
             selectedVideo.Pause();
@@ -182,6 +183,25 @@ namespace VideoSteganography
             isEnded = true;
         }
 
+        private void BtnDelSpaces_Click(object sender, RoutedEventArgs e)
+        {
+            setCountOfChracter();
+            txtCountChracter.Text = $"Chracter count of your information : {counfOfChracter}";
+        }
+
+        private void TxtHide_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (unimportant > 3)
+            {
+                RichTextBox txtInfo = (sender as RichTextBox);
+                setCountOfChracter();
+                txtCountChracter.Text = $"Chracter count of your information : {counfOfChracter}";
+            }
+            unimportant++;
+        }
+        #endregion
+
+        #region private methods
         private void FetchPixels() // Pixels are fetching.
         {
             VideoFileReader reader = new VideoFileReader();
@@ -201,24 +221,6 @@ namespace VideoSteganography
             capacityHiding = (framecount * width * height * 3) / 8;
             capacityPerFrame = capacityHiding / framecount;
         }
-        
-
-        private void BtnDelSpaces_Click(object sender, RoutedEventArgs e)
-        {
-            setCountOfChracter();
-            txtCountChracter.Text = $"Chracter count of your information : {counfOfChracter}";
-        }
-
-        private void TxtHide_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (unimportant > 3)
-            {
-                RichTextBox txtInfo = (sender as RichTextBox);
-                setCountOfChracter();
-                txtCountChracter.Text = $"Chracter count of your information : {counfOfChracter}";
-            }
-            unimportant++;
-        }
 
         private void setCountOfChracter()
         {
@@ -231,7 +233,6 @@ namespace VideoSteganography
                 counfOfChracter = new TextRange(txtHide.Document.ContentStart, txtHide.Document.ContentEnd).Text.Trim().Count();
             }
         }
-
 
         private void FillTextBoxes(Microsoft.Win32.OpenFileDialog dialog)
         {
@@ -291,6 +292,7 @@ namespace VideoSteganography
             txtSC.Text = Steganography.calcSC(bitmaps.Take(countFrame).ToList(), bitmapsEmbedded.Take(countFrame).ToList()).ToString("0.0000000");
             lblSC.Visibility = Visibility.Visible;
         }
+        #endregion
     }
 
     static class Extensions

@@ -6,6 +6,7 @@ namespace VideoSteganography
 {
     class Steganography
     {
+        #region operation of stegangraphy
         public enum State
         {
             Hiding,
@@ -223,7 +224,9 @@ namespace VideoSteganography
 
             return result;
         }
+        #endregion
 
+        #region calc quality values
         public static float calcMSE(List<Bitmap> bitmapsReal, List<Bitmap> bitmapsStego)
         {
             float difference = 0f;
@@ -353,6 +356,7 @@ namespace VideoSteganography
             }
             return (stegoSum / realSum);
         }
+        #endregion
     }
 }
 
